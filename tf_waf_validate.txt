@@ -1,9 +1,0 @@
-[31m╷[0m[0m
-[31m│[0m [0m[1m[31mError: [0m[0m[1mMissing required provider[0m
-[31m│[0m [0m
-[31m│[0m [0m[0mThis configuration requires provider registry.terraform.io/hashicorp/aws,
-[31m│[0m [0mbut that provider isn't available. You may be able to install it
-[31m│[0m [0mautomatically by running:
-[31m│[0m [0m  terraform init
-[31m╵[0m[0m
----WAF-VALIDATE-EXIT:1---

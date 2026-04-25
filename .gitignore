@@ -47,11 +47,12 @@ Thumbs.db
 # Logs
 *.log
 
-# Large binaries
+# Large binaries and temp files
 awscliv2.zip
 kubectl
 *.zip
 *.tar.gz
+tf_*.txt
 
 # Kiro internal
 .kiro/
