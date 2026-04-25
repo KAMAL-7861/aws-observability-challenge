@@ -47,5 +47,11 @@ Thumbs.db
 # Logs
 *.log
 
+# Large binaries
+awscliv2.zip
+kubectl
+*.zip
+*.tar.gz
+
 # Kiro internal
 .kiro/
