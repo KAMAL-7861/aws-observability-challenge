@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice-nlb
+  namespace: online-boutique
+  labels:
+    app: productcatalogservice
+    cluster: obs-challenge-c2
+spec:
+  type: NodePort
+  selector:
+    app: productcatalogservice
+  ports:
+    - port: 3550
+      targetPort: 3550
+      nodePort: 30550
+      protocol: TCP
+      name: grpc

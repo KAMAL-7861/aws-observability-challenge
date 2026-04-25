@@ -1,0 +1,161 @@
+<mxfile host="app.diagrams.net" modified="2026-04-20T00:00:00.000Z" agent="Kiro" version="24.0.0">
+  <diagram id="aws-obs-challenge" name="AWS Observability Challenge">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Internet / User -->
+        <mxCell id="user" value="End User / Reviewer" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="700" y="20" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- us-east-1 Region Box -->
+        <mxCell id="region1" value="us-east-1 — C1 (Primary)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=14;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="700" height="520" as="geometry"/>
+        </mxCell>
+
+        <!-- VPC-C1 -->
+        <mxCell id="vpc1" value="VPC-C1 (10.0.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontStyle=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="660" height="460" as="geometry"/>
+        </mxCell>
+
+        <!-- WAF -->
+        <mxCell id="waf" value="AWS WAF&#xa;SQLi + XSS + Rate Limit" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="180" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ALB -->
+        <mxCell id="alb" value="ALB (HTTP :80)&#xa;PUBLIC" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="280" y="250" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- EKS C1 -->
+        <mxCell id="eks1" value="EKS: obs-challenge-c1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="320" width="420" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- Frontend -->
+        <mxCell id="frontend" value="frontend :8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="110" y="360" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Other services -->
+        <mxCell id="cart" value="cartservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="410" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="checkout" value="checkoutservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="210" y="410" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="currency" value="currencyservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="410" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="payment" value="paymentservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="450" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="shipping" value="shippingservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="450" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="recommend" value="recommendationservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="450" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ad" value="adservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="490" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="email" value="emailservice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="490" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis" value="redis-cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="490" width="80" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Elastic Agent C1 -->
+        <mxCell id="ea1" value="Elastic Agent&#xa;DaemonSet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="540" width="100" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ExternalName Service -->
+        <mxCell id="extsvc" value="ExternalName Svc&#xa;productcatalogservice-external :3550" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="340" width="170" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- VPC Endpoint -->
+        <mxCell id="vpce" value="VPC Endpoint&#xa;(Interface Type)&#xa;PrivateLink Consumer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="540" y="420" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- us-west-2 Region Box -->
+        <mxCell id="region2" value="us-west-2 — C2 (Secondary)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=14;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="850" y="120" width="500" height="520" as="geometry"/>
+        </mxCell>
+
+        <!-- VPC-C2 -->
+        <mxCell id="vpc2" value="VPC-C2 (10.1.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontStyle=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="160" width="460" height="460" as="geometry"/>
+        </mxCell>
+
+        <!-- VPC Endpoint Service -->
+        <mxCell id="vpces" value="VPC Endpoint Service&#xa;PrivateLink Provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="170" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- NLB -->
+        <mxCell id="nlb" value="NLB (TCP :3550)&#xa;INTERNAL" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="380" width="170" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- EKS C2 -->
+        <mxCell id="eks2" value="EKS: obs-challenge-c2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="460" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- productcatalogservice -->
+        <mxCell id="pcs" value="productcatalogservice&#xa;:3550 (gRPC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="920" y="500" width="160" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Elastic Agent C2 -->
+        <mxCell id="ea2" value="Elastic Agent&#xa;DaemonSet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="550" width="100" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Elastic Cloud -->
+        <mxCell id="elastic" value="Elastic Cloud (Free Trial)&#xa;Elasticsearch + Kibana + Fleet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="200" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="user" target="waf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="waf" target="alb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="alb" target="frontend" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="gRPC" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="frontend" target="extsvc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="DNS resolves" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="extsvc" target="vpce" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="PrivateLink&#xa;(Cross-Region)" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#b85450;strokeWidth=2;" edge="1" source="vpce" target="vpces" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="vpces" target="nlb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="TCP :30550" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="nlb" target="pcs" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="logs + metrics" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;" edge="1" source="ea1" target="elastic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="logs + metrics" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;" edge="1" source="ea2" target="elastic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

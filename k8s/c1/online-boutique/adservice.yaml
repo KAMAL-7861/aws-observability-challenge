@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+  namespace: online-boutique
+  labels:
+    app: adservice
+    cluster: obs-challenge-c1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adservice
+  template:
+    metadata:
+      labels:
+        app: adservice
+        cluster: obs-challenge-c1
+    spec:
+      containers:
+        - name: adservice
+          image: gcr.io/google-samples/microservices-demo/adservice:v0.10.1
+          ports:
+            - containerPort: 9555
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "9555"
+          resources:
+            requests:
+              cpu: 200m
+              memory: 180Mi
+            limits:
+              cpu: 300m
+              memory: 300Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adservice
+  namespace: online-boutique
+  labels:
+    app: adservice
+    cluster: obs-challenge-c1
+spec:
+  type: ClusterIP
+  selector:
+    app: adservice
+  ports:
+    - port: 9555
+      targetPort: 9555
+      protocol: TCP
+      name: grpc

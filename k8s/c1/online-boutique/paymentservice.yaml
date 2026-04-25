@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentservice
+  namespace: online-boutique
+  labels:
+    app: paymentservice
+    cluster: obs-challenge-c1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentservice
+  template:
+    metadata:
+      labels:
+        app: paymentservice
+        cluster: obs-challenge-c1
+    spec:
+      containers:
+        - name: paymentservice
+          image: gcr.io/google-samples/microservices-demo/paymentservice:v0.10.1
+          ports:
+            - containerPort: 50051
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "50051"
+            - name: DISABLE_PROFILER
+              value: "1"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: paymentservice
+  namespace: online-boutique
+  labels:
+    app: paymentservice
+    cluster: obs-challenge-c1
+spec:
+  type: ClusterIP
+  selector:
+    app: paymentservice
+  ports:
+    - port: 50051
+      targetPort: 50051
+      protocol: TCP
+      name: grpc

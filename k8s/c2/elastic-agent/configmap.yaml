@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elastic-agent-config
+  namespace: online-boutique
+  labels:
+    app: elastic-agent
+data:
+  FLEET_URL: "<REPLACE_WITH_FLEET_SERVER_URL>"
+  FLEET_ENROLLMENT_TOKEN: "<REPLACE_WITH_ENROLLMENT_TOKEN>"
+  CLUSTER_NAME: "obs-challenge-c2"
+  ELASTIC_CLOUD_ID: "<REPLACE_WITH_CLOUD_ID>"

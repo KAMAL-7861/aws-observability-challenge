@@ -1,0 +1,36 @@
+# Kubernetes Ingress resource for the frontend service.
+# This works alongside the Terraform-provisioned ALB.
+# The AWS Load Balancer Controller (installed on EKS) will reconcile this
+# Ingress with the existing ALB, or you can use this as the primary ALB
+# provisioning mechanism by installing the AWS LB Controller add-on.
+#
+# If using Terraform-provisioned ALB: this Ingress serves as documentation
+# and allows `kubectl get ingress` to show the ALB DNS name.
+#
+# If using AWS LB Controller: this Ingress creates the ALB automatically.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: online-boutique
+  labels:
+    app: frontend
+    cluster: obs-challenge-c1
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/wafv2-acl-arn: "<REPLACE_WITH_WAF_WEB_ACL_ARN>"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 8080

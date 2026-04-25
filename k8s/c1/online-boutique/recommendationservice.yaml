@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice
+  namespace: online-boutique
+  labels:
+    app: recommendationservice
+    cluster: obs-challenge-c1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendationservice
+  template:
+    metadata:
+      labels:
+        app: recommendationservice
+        cluster: obs-challenge-c1
+    spec:
+      containers:
+        - name: recommendationservice
+          image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.10.1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: "productcatalogservice-external.online-boutique.svc.cluster.local:3550"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice
+  namespace: online-boutique
+  labels:
+    app: recommendationservice
+    cluster: obs-challenge-c1
+spec:
+  type: ClusterIP
+  selector:
+    app: recommendationservice
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: grpc

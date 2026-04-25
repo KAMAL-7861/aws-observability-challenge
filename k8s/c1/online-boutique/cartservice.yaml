@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: online-boutique
+  labels:
+    app: cartservice
+    cluster: obs-challenge-c1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cartservice
+  template:
+    metadata:
+      labels:
+        app: cartservice
+        cluster: obs-challenge-c1
+    spec:
+      containers:
+        - name: cartservice
+          image: gcr.io/google-samples/microservices-demo/cartservice:v0.10.1
+          ports:
+            - containerPort: 7070
+              protocol: TCP
+          env:
+            - name: REDIS_ADDR
+              value: "redis-cart:6379"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+  namespace: online-boutique
+  labels:
+    app: cartservice
+    cluster: obs-challenge-c1
+spec:
+  type: ClusterIP
+  selector:
+    app: cartservice
+  ports:
+    - port: 7070
+      targetPort: 7070
+      protocol: TCP
+      name: grpc

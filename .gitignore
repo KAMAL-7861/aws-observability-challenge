@@ -1,0 +1,51 @@
+# Terraform state files — contain AWS account IDs, ARNs, resource IDs
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+errored.tfstate
+
+# Terraform working directories
+**/.terraform/
+.terraform.lock.hcl
+
+# Terraform variable files that may contain sensitive values
+# (keep terraform.tfvars in version control but exclude any *.auto.tfvars)
+*.auto.tfvars
+
+# Terraform plan output
+*.tfplan
+
+# AWS credentials
+.aws/
+credentials
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Kiro internal
+.kiro/

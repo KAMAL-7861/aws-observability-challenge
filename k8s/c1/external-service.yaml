@@ -1,0 +1,19 @@
+# ExternalName Service for cross-cluster productcatalogservice access via PrivateLink.
+# Replace <REPLACE_WITH_VPC_ENDPOINT_DNS> with the actual VPC Endpoint DNS name.
+# Obtain it by running: terraform output vpc_endpoint_dns_name
+# from the terraform/environments/c1-us-east-1/ directory after applying infrastructure.
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice-external
+  namespace: online-boutique
+  labels:
+    app: productcatalogservice
+    cluster: obs-challenge-c1
+spec:
+  type: ExternalName
+  externalName: <REPLACE_WITH_VPC_ENDPOINT_DNS>
+  ports:
+    - port: 3550
+      targetPort: 3550
+      protocol: TCP
